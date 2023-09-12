@@ -344,7 +344,7 @@ export default {
               name: 'Profundidad del agua',
               caption: 'm (negative values)',
               value: '',
-              meetsRule: this.calcZeros(['Mexico_Bat']),
+              meetsRule: this.calcZeros(['Mexico_B_1']),
               rule:
                 'Depth between -40 - -60 m are suitabel (score of 1.00), between 0 - -30 m and -100 and below are poorly suitable and should be exceluded from further',
               description:
@@ -355,36 +355,36 @@ export default {
               name: 'Temperatura de la superficie del mar (SST)',
               caption: 'C',
               value: '',
-              meetsRule: this.calcZeros(['Mexico_SST']),
+              meetsRule: this.calcZeros(['Mexico_S_1']),
               rule:
                 'Temperature less than 16 is less suitable (score 0.1), between 16 and less than 23 and 26 or greater are moderately suitable (score 0.5), tempearture at 23 and less than 26 are most suitable (1.00)',
               description:
                 'Las temperaturas que no son las ideales pueden causar efectos negativos en las especies acuícolas y pueden provocar un crecimiento lento, enfermedades y la muerte.',
-              layers: [{ name: 'Temperatura', id: '25_0' }],
+              layers: [{ name: 'Temperatura', id: '31_0' }],
             },
             {
               name: 'Hidrodinámica (Altura de ola significativa)',
               caption: 'Wave (m)',
               value: '',
-              meetsRule: this.calcZeros(['Mexico_Wav']),
+              meetsRule: this.calcZeros(['Mexico_W_1']),
               rule:
                 'Wave height below 0.5 m are suitable (score of 1.00), greater than 0.5 and less than 2.5 m are moderatley suitable (score of 0.5), and greater than 2.5 m are less suitable (score of 0.1).',
               description:
                 'Cuando las olas son demasiado altas, es cada vez más difícil visitar un sitio para alimentar y mantener el equipo. En condiciones de olas severas, el equipo puede soltarse o romperse.',
               layers: [
-                { name: 'Altura de ola significativa - metro', id: '26_0' },
+                { name: 'Altura de ola significativa - metro', id: '29_0' },
               ],
             },
             {
               name: 'Clorofila a (mg m-3)',
               caption: '',
               value: '',
-              meetsRule: this.calcZeros(['Mexico_Chl']),
+              meetsRule: this.calcZeros(['Mexico_C_2']),
               rule:
                 'Chlorophyll less than 0.1 and 2 or greater have the lowest suitability (score 0.1), between 0.5 and less than 2, have moderature suitabililty (score 0.5), and between 0.1 and less than 0.5 have the highest suitability (score 1.00)',
               description:
                 'Las áreas con alto contenido de clorofila pueden no ser adecuadas para todas las especies, esto podría ser un indicador de un exceso de escorrentía.',
-              layers: [{ name: 'Clorofila a', id: '18_0' }],
+              layers: [{ name: 'Clorofila a', id: '30_0' }],
             },
           ],
         },
@@ -418,7 +418,7 @@ export default {
               description:
                 'Los puertos son una infraestructura importante para las operaciones en alta mar.',
               layers: [
-                { name: 'Puertos - Zona de influencia de 20 km', id: '20_0' },
+                { name: 'Puertos - Zona de influencia de 20 km', id: '36_0' },
               ],
             },
             {
@@ -463,17 +463,6 @@ export default {
               meetsRule: this.calcZeros(['Mexico_MPA']),
               rule:
                 'Areas associated with marine protected areas are poorly suitable (score of 0.00).',
-              description:
-                'Vitar el conflicto entre la gestión de los recursos naturales y las operaciones de acuicultura.',
-              layers: [{ name: 'Áreas Marinas Protegidas', id: '23_0' }],
-            },
-            {
-              name: 'Áreas Marinas Protegidas',
-              caption: '',
-              value: '',
-              meetsRule: this.calcZeros(['Mexico_M_1']),
-              rule:
-                'Areas associated with marine protected areas are moderately suitable (score of 0.50).',
               description:
                 'Vitar el conflicto entre la gestión de los recursos naturales y las operaciones de acuicultura.',
               layers: [{ name: 'Áreas Marinas Protegidas', id: '22_0' }],

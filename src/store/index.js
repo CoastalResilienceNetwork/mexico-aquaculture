@@ -14,7 +14,7 @@ export default createStore({
         {
           mapService:
             'https://services2.coastalresilience.org/arcgis/rest/services/Mexico/AquacultureSuitability/MapServer',
-          skipLayers: [0],
+          skipLayers: [0, 2],
           title: 'Mexico Aquaculture Study',
           popupTemplate: [
             {
