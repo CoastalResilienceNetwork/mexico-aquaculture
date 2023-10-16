@@ -42,7 +42,6 @@
           @update:model-value="setSpecies($event)"
           val="onshore"
           label="On Shore"
-          disabled
         />
       </div>
       <div
@@ -286,7 +285,7 @@ export default {
       this.$store.commit('updateUserProcess', this.userProcess);
       this.$store.commit('updateSetTicked', {
         tick: [],
-        untick: ['3_0', '4_0'],
+        untick: ['5_0', '6_0'],
       });
       this.$store.commit('clearUserResults');
       this.$router.push('create');
@@ -294,8 +293,8 @@ export default {
     setSpecies(val) {
       if (val == 'offshore') {
         this.$store.commit('updateSetTicked', {
-          tick: ['1_0'],
-          untick: ['15_0'],
+          tick: ['5_0'],
+          untick: ['6_0'],
         });
         let layerObj = {
           value: 0.5,
@@ -304,14 +303,14 @@ export default {
           type: 'Raster Layer',
         };
         this.$store.commit('updateSupportingLayerVisibleOpacity', layerObj);
-      } else if (val == 'finfish') {
+      } else if (val == 'onshore') {
         this.$store.commit('updateSetTicked', {
-          tick: ['4_0'],
-          untick: ['3_0'],
+          tick: ['6_0'],
+          untick: ['5_0'],
         });
         let layerObj = {
           value: 0.5,
-          id: 4,
+          id: 6,
           mapServiceIndex: 0,
           type: 'Raster Layer',
         };

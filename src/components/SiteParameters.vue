@@ -341,114 +341,363 @@ export default {
           sectionIcon: 'language',
           sectionData: [
             {
-              name: 'Profundidad del agua',
-              caption: 'm (negative values)',
+              name: 'Bahías',
+              caption: '',
               value: '',
-              meetsRule: this.calcZeros(['Mexico_B_1']),
-              rule:
-                'Depth between -40 - -60 m are suitabel (score of 1.00), between 0 - -30 m and -100 and below are poorly suitable and should be exceluded from further',
+              meetsRule: this.calcZeros(['Baja_All_Bays_Webmap']),
+              rule: '',
+              description:
+                'Las bahías ofrecen protección contra el medio ambiente.',
+              layers: [{ name: 'Bahías', id: '8_0' }],
+            },
+            {
+              name: 'Ríos - Zona de influencia de 1 km',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Mexico_River_1km_Webmap']),
+              rule: '',
+              description:
+                'Se deben evitar las desembocaduras de los ríos para el desarrollo de la acuicultura.',
+              layers: [
+                { name: 'Ríos - Zona de influencia de 1 km', id: '9_0' },
+              ],
+            },
+            {
+              name: 'Costa - Zona de influencia de 2 km',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Mexico_Coast_2km_Webmap']),
+              rule: '',
+              description: 'Las zonas cercanas a la costa son más adecuadas.',
+              layers: [
+                { name: 'Costa - Zona de influencia de 2 km', id: '10_0' },
+              ],
+            },
+            {
+              name: 'Costa - Zona de influencia de 20 km',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Mexico_Coast_20km_Webmap']),
+              rule: '',
+              description: 'Las zonas cercanas a la costa son más adecuadas.',
+              layers: [
+                { name: 'Costa - Zona de influencia de 20 km', id: '11_0' },
+              ],
+            },
+            {
+              name: 'Batimetría - metro',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Mexico_Bathy_GMRT_Focal_Webmap']),
+              rule: '',
               description:
                 'Las operaciones de acuicultura en aguas poco profundas pueden conducir a la deposición de desechos de pescado y exceso de alimento en el lecho marino, lo que puede causar contaminación e impacto por nutrientes.',
-              layers: [{ name: 'Batimetría - metro', id: '17_0' }],
-            },
-            {
-              name: 'Temperatura de la superficie del mar (SST)',
-              caption: 'C',
-              value: '',
-              meetsRule: this.calcZeros(['Mexico_S_1']),
-              rule:
-                'Temperature less than 16 is less suitable (score 0.1), between 16 and less than 23 and 26 or greater are moderately suitable (score 0.5), tempearture at 23 and less than 26 are most suitable (1.00)',
-              description:
-                'Las temperaturas que no son las ideales pueden causar efectos negativos en las especies acuícolas y pueden provocar un crecimiento lento, enfermedades y la muerte.',
-              layers: [{ name: 'Temperatura', id: '31_0' }],
-            },
-            {
-              name: 'Hidrodinámica (Altura de ola significativa)',
-              caption: 'Wave (m)',
-              value: '',
-              meetsRule: this.calcZeros(['Mexico_W_1']),
-              rule:
-                'Wave height below 0.5 m are suitable (score of 1.00), greater than 0.5 and less than 2.5 m are moderatley suitable (score of 0.5), and greater than 2.5 m are less suitable (score of 0.1).',
-              description:
-                'Cuando las olas son demasiado altas, es cada vez más difícil visitar un sitio para alimentar y mantener el equipo. En condiciones de olas severas, el equipo puede soltarse o romperse.',
-              layers: [
-                { name: 'Altura de ola significativa - metro', id: '29_0' },
-              ],
+              layers: [{ name: 'Batimetría - metro', id: '12_0' }],
             },
             {
               name: 'Clorofila a (mg m-3)',
               caption: '',
               value: '',
-              meetsRule: this.calcZeros(['Mexico_C_2']),
-              rule:
-                'Chlorophyll less than 0.1 and 2 or greater have the lowest suitability (score 0.1), between 0.5 and less than 2, have moderature suitabililty (score 0.5), and between 0.1 and less than 0.5 have the highest suitability (score 1.00)',
+              meetsRule: this.calcZeros(['Mexico_Chla_10yr_Avg_Webmap']),
+              rule: '',
               description:
                 'Las áreas con alto contenido de clorofila pueden no ser adecuadas para todas las especies, esto podría ser un indicador de un exceso de escorrentía.',
-              layers: [{ name: 'Clorofila a', id: '30_0' }],
+              layers: [{ name: 'Clorofila a (mg m-3)', id: '13_0' }],
             },
-          ],
-        },
-        {
-          sectionName: 'Infraestructura',
-          sectionIcon: 'houseboat',
-          sectionData: [
             {
-              name: 'Sitios de acuicultura',
+              name: 'Velocidad de la corriente oceánica (m/s), 2010 - 2020',
               caption: '',
               value: '',
-              meetsRule: this.calcZeros(['Mexico_Aqu', 'Mexico_A_1']),
-              rule:
-                'Areas within 500 m of existing aquaculture farms are poorly suitable (score of 0.00).',
+              meetsRule: this.calcZeros(['Mexico_Current_2010_2020_Webmap']),
+              rule: '',
               description:
-                'Minimizar el potencial de bioseguridad y problemas de transmisión de enfermedades entre las operaciones acuícolas existentes y futuras.',
+                'Las áreas con altas velocidades de corriente pueden no ser adecuadas.',
               layers: [
                 {
-                  name: 'Sitios de acuicultura - Zona de influencia de 500 m',
+                  name: 'Velocidad de la corriente oceánica (m/s), 2010 - 2020',
+                  id: '14_0',
+                },
+              ],
+            },
+            {
+              name:
+                'Trayectorias de huracanes y velocidad del viento, 1990-2021',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros([
+                'Mexico_Hurricane_1990_2021_Wind_Webmap',
+              ]),
+              rule: '',
+              description:
+                'Evite áreas conocidas de alta ocurrencia de huracanes.',
+              layers: [
+                {
+                  name:
+                    'Trayectorias de huracanes y velocidad del viento, 1990-2021',
                   id: '15_0',
                 },
               ],
             },
             {
-              name: 'Puertos',
+              name: 'Kd490',
               caption: '',
               value: '',
-              meetsRule: this.calcZeros(['Mexico_Por']),
-              rule:
-                'Areas within 20 km of a port are highly suitable (score of 1.00).',
+              meetsRule: this.calcZeros(['Mexico_Current_2010_2020_Webmap']),
+              rule: '',
+              description:
+                'Kd490 es una medida de turbidez, se deben evitar áreas con un valor alto',
+              layers: [{ name: 'Kd490', id: '16_0' }],
+            },
+            {
+              name: 'Salinidad del océano (ppt)',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Mexico_Salinity_10yr_Avg_Webmap']),
+              rule: '',
+              description:
+                'La salinidad del océano es importante para las especies acuícolas.',
+              layers: [{ name: 'Salinidad del océano (ppt)', id: '17_0' }],
+            },
+            {
+              name: 'Temperatura de la superficie del mar (SST)',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Mexico_SST_10yr_Avg_Webmap']),
+              rule: '',
+              description:
+                'Las temperaturas que no son las ideales pueden causar efectos negativos en las especies acuícolas y pueden provocar un crecimiento lento, enfermedades y la muerte.',
+              layers: [
+                {
+                  name: 'Temperatura de la superficie del mar (SST)',
+                  id: '18_0',
+                },
+              ],
+            },
+            {
+              name: 'Altura de ola significativa (m)',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Mexico_Wave_2021_Webmap']),
+              rule: '',
+              description:
+                'Cuando las olas son demasiado altas, es cada vez más difícil visitar un sitio para alimentar y mantener el equipo. En condiciones de olas severas, el equipo puede soltarse o romperse.',
+              layers: [{ name: 'Altura de ola significativa (m)', id: '20_0' }],
+            },
+          ],
+        },
+
+        {
+          sectionName: 'Infraestructura',
+          sectionIcon: 'houseboat',
+          sectionData: [
+            {
+              SectionName: 'Infraestructura',
+              SectionIcon: 'houseboat',
+              name: 'Puertos - Zona de influencia de 20 km',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Baja_All_Ports_20km_Webmap']),
+              rule: '',
               description:
                 'Los puertos son una infraestructura importante para las operaciones en alta mar.',
               layers: [
-                { name: 'Puertos - Zona de influencia de 20 km', id: '36_0' },
+                { name: 'Puertos - Zona de influencia de 20 km', id: '21_0' },
               ],
             },
             {
-              name: 'Carreteras',
+              SectionName: 'Infraestructura',
+              SectionIcon: 'houseboat',
+              name: 'Carreteras - Zona de influencia de 5 km',
               caption: '',
               value: '',
-              meetsRule: this.calcZeros(['Mexico_Hig']),
-              rule:
-                'Areas within 5 km of a highway are highly suitable (score of 1.00).',
+              meetsRule: this.calcZeros(['Baja_Roads_OSM_5km_Webmap']),
+              rule: '',
               description:
                 'Las carreteras son una infraestructura importante para las operaciones en alta mar.',
               layers: [
-                { name: 'Carreteras - Zona de influencia de 5 km', id: '21_0' },
+                { name: 'Carreteras - Zona de influencia de 5 km', id: '22_0' },
               ],
             },
             {
-              name: 'Línea costera',
+              SectionName: 'Infraestructura',
+              SectionIcon: 'houseboat',
+              name: 'Rutas de ferry',
               caption: '',
               value: '',
-              meetsRule: this.calcZeros(['Mexico_Coa']),
-              rule:
-                'Areas within 20 km of a port are highly suitable (score of 1.00).',
-              description:
-                'Los sitios de acuicultura demasiado lejos de la costa pueden ser costosos de acceder y mantener.',
+              meetsRule: this.calcZeros(['Mexico_Ferry_Routes_500m_Webmap']),
+              rule: '',
+              description: 'Evite áreas importantes para rutas de ferry.',
               layers: [
                 {
-                  name: 'Línea costera - Zona de influencia de 20 km',
-                  id: '20_0',
+                  name: 'Rutas de ferry - Zona de influencia de 500 m',
+                  id: '23_0',
                 },
               ],
+            },
+            {
+              SectionName: 'Infraestructura',
+              SectionIcon: 'houseboat',
+              name: 'Instalación de aguas residuales',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Plantas_tratam_5km_Webmap']),
+              rule: '',
+              description:
+                'Evite áreas cercanas a instalaciones de tratamiento de aguas residuales.',
+              layers: [
+                {
+                  name:
+                    'Instalación de aguas residuales - Zona de influencia de 500 m',
+                  id: '24_0',
+                },
+              ],
+            },
+            {
+              SectionName: 'Infraestructura',
+              SectionIcon: 'houseboat',
+              name: 'Sitios de acuicultura',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros([
+                'Mexico_Aqua_Process_500m_Webmap',
+                'Mexico_Aqua_Current_500m_Webmap',
+              ]),
+              rule: '',
+              description:
+                'Minimizar el potencial de bioseguridad y problemas de transmisión de enfermedades entre las operaciones acuícolas existentes y futuras.',
+              layers: [
+                {
+                  name: 'Sitios de acuicultura - Zona de influencia de 500 m',
+                  id: '25_0',
+                },
+              ],
+            },
+            {
+              SectionName: 'Infraestructura',
+              SectionIcon: 'houseboat',
+              name: 'Sitios de acuicultura',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros([
+                'Mexico_Aqua_Process_500m',
+                'Mexico_Aqua_Current_500m',
+              ]),
+              rule: '',
+              description:
+                'Minimizar el potencial de bioseguridad y problemas de transmisión de enfermedades entre las operaciones acuícolas existentes y futuras.',
+              layers: [
+                {
+                  name: 'Sitios de acuicultura - Zona de influencia de 500 m',
+                  id: '26_0',
+                },
+              ],
+            },
+            {
+              SectionName: 'Infraestructura',
+              SectionIcon: 'houseboat',
+              name:
+                'Localización y Monitoreo Satelital de Embarcaciones Pesqueras - 2018',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Baja_msep_vessels_2018_Webmap']),
+              rule: '',
+              description:
+                'Deben evitarse las zonas con alta actividad pesquera.',
+              layers: [
+                {
+                  name:
+                    'Localización y Monitoreo Satelital de Embarcaciones Pesqueras - 2018',
+                  id: '27_0',
+                },
+              ],
+            },
+            {
+              SectionName: 'Infraestructura',
+              SectionIcon: 'houseboat',
+              name:
+                'Localización y Monitoreo Satelital de Embarcaciones Pesqueras - 2019',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Baja_msep_vessels_2019_Webmap']),
+              rule: '',
+              description:
+                'Deben evitarse las zonas con alta actividad pesquera.',
+              layers: [
+                {
+                  name:
+                    'Localización y Monitoreo Satelital de Embarcaciones Pesqueras - 2019',
+                  id: '28_0',
+                },
+              ],
+            },
+            {
+              SectionName: 'Infraestructura',
+              SectionIcon: 'houseboat',
+              name:
+                'Localización y Monitoreo Satelital de Embarcaciones Pesqueras - 2020',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Baja_msep_vessels_2020_Webmap']),
+              rule: '',
+              description:
+                'Deben evitarse las zonas con alta actividad pesquera.',
+              layers: [
+                {
+                  name:
+                    'Localización y Monitoreo Satelital de Embarcaciones Pesqueras - 2020',
+                  id: '29_0',
+                },
+              ],
+            },
+            {
+              SectionName: 'Infraestructura',
+              SectionIcon: 'houseboat',
+              name:
+                'Localización y Monitoreo Satelital de Embarcaciones Pesqueras - 2021',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Baja_msep_vessels_2021_Webmap']),
+              rule: '',
+              description:
+                'Deben evitarse las zonas con alta actividad pesquera.',
+              layers: [
+                {
+                  name:
+                    'Localización y Monitoreo Satelital de Embarcaciones Pesqueras - 2021',
+                  id: '30_0',
+                },
+              ],
+            },
+            {
+              SectionName: 'Infraestructura',
+              SectionIcon: 'houseboat',
+              name:
+                'Localización y Monitoreo Satelital de Embarcaciones Pesqueras - 2022',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Baja_msep_vessels_2022_Webmap']),
+              rule: '',
+              description:
+                'Deben evitarse las zonas con alta actividad pesquera.',
+              layers: [
+                {
+                  name:
+                    'Localización y Monitoreo Satelital de Embarcaciones Pesqueras - 2022',
+                  id: '31_0',
+                },
+              ],
+            },
+            {
+              SectionName: 'Infraestructura',
+              SectionIcon: 'houseboat',
+              name: 'Densidad de buques, 2015 - 2021',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Mexico_Ship_Density_Webmap']),
+              rule: '',
+              description:
+                'Deben evitarse las zonas de alta densidad de envío.',
+              layers: [{ name: 'Densidad de buques, 2015 - 2021', id: '32_0' }],
             },
           ],
         },
@@ -460,12 +709,139 @@ export default {
               name: 'Áreas Marinas Protegidas',
               caption: '',
               value: '',
-              meetsRule: this.calcZeros(['Mexico_MPA']),
-              rule:
-                'Areas associated with marine protected areas are poorly suitable (score of 0.00).',
+              meetsRule: this.calcZeros(['Mexico_MPA_No_Take_Webmap']),
+              rule: '',
+              description:
+                'Evitar el conflicto entre la gestión de los recursos naturales y las operaciones de acuicultura.',
+              layers: [{ name: 'Áreas Marinas Protegidas', id: '36_0' }],
+            },
+            {
+              name: 'Zonas de Refugio Pesquero (ZRP)',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Mexico_refugios_pesca_Webmap']),
+              rule: '',
+              description:
+                'Evitar el conflicto entre la gestión de los recursos naturales y las operaciones de acuicultura.',
+              layers: [{ name: 'Zonas de Refugio Pesquero (ZRP)', id: '40_0' }],
+            },
+            {
+              name: 'Áreas de conservación de humedales RAMSAR',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Mexico_MPA_Ramsar_Webmap']),
+              rule: '',
+              description:
+                'Evitar, cuando sea posible, áreas designadas como áreas de conservación de humedales RAMSAR.',
+              layers: [
+                {
+                  name: 'Áreas de conservación de humedales RAMSAR',
+                  id: '38_0',
+                },
+              ],
+            },
+            {
+              name: 'Áreas Marinas Protegidas',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Mexico_MPA_Webmap']),
+              rule: '',
               description:
                 'Vitar el conflicto entre la gestión de los recursos naturales y las operaciones de acuicultura.',
-              layers: [{ name: 'Áreas Marinas Protegidas', id: '22_0' }],
+              layers: [{ name: 'Áreas Marinas Protegidas', id: '37_0' }],
+            },
+            {
+              name: 'Áreas Marinas Protegidas',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Mexico_MPA_Multi_Use']),
+              rule: '',
+              description:
+                'Vitar el conflicto entre la gestión de los recursos naturales y las operaciones de acuicultura.',
+              layers: [{ name: 'Áreas Marinas Protegidas', id: '39_0' }],
+            },
+            {
+              name: 'Áreas de manglares - Zona de influencia de 50 m',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Mexico_Mangrove_50m_Webmap']),
+              rule: '',
+              description:
+                'Las áreas de manglares deben evitarse cuando sea posible.',
+              layers: [
+                {
+                  name: 'Áreas de manglares - Zona de influencia de 50 m',
+                  id: '34_0',
+                },
+              ],
+            },
+            {
+              name:
+                'Áreas de manglares amenazadas - Zona de influencia de 500 m',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Mexico_Mangrove_Threat_500m_Webmap']),
+              rule: '',
+              description:
+                'Las áreas de manglares deben evitarse cuando sea posible.',
+              layers: [
+                {
+                  name:
+                    'Áreas de manglares amenazadas - Zona de influencia de 500 m',
+                  id: '35_0',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          sectionName: 'Socioculturales',
+          sectionIcon: 'people',
+          sectionData: [
+            {
+              name: 'Resultados del mapeo comunitario - Puntos',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Felt_Pts_500m_Proj_Webmap']),
+              rule: '',
+              description:
+                'A través de un enfoque de mapeo comunitario se identificaron las áreas consideradas adecuadas.',
+              layers: [
+                {
+                  name: 'Resultados del mapeo comunitario - Puntos',
+                  id: '44_0',
+                },
+              ],
+            },
+            {
+              name: 'Resultados del mapeo comunitario - Líneas',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Felt_Lines_500m_Proj_Webmap']),
+              rule: '',
+              description:
+                'A través de un enfoque de mapeo comunitario se identificaron las áreas consideradas adecuadas.',
+              layers: [
+                {
+                  name: 'Resultados del mapeo comunitario - Líneas',
+                  id: '42_0',
+                },
+              ],
+            },
+            {
+              name: 'Resultados del mapeo comunitario - Polígonos',
+              caption: '',
+              value: '',
+              meetsRule: this.calcZeros(['Felt_Poly_Proj_Webmap']),
+              rule: '',
+              description:
+                'A través de un enfoque de mapeo comunitario se identificaron las áreas consideradas adecuadas.',
+              layers: [
+                {
+                  name: 'Resultados del mapeo comunitario - Polígonos',
+                  id: '43_0',
+                },
+              ],
             },
           ],
         },

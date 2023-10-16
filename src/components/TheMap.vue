@@ -155,7 +155,13 @@ export default {
     //TODO: add this to config not needed?
 
     esri.offshore = new FeatureLayer({
-      url: this.$store.state.config.supportingMapLayers[0].mapService + '/' + 2,
+      url: this.$store.state.config.supportingMapLayers[0].mapService + '/' + 5,
+      visible: false,
+    });
+    esri.map.add(esri.offshore);
+
+    esri.offshore = new FeatureLayer({
+      url: this.$store.state.config.supportingMapLayers[0].mapService + '/' + 6,
       visible: false,
     });
     esri.map.add(esri.offshore);
