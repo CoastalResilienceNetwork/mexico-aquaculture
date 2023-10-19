@@ -155,16 +155,16 @@ export default {
     //TODO: add this to config not needed?
 
     esri.offshore = new FeatureLayer({
-      url: this.$store.state.config.supportingMapLayers[0].mapService + '/' + 5,
+      url: this.$store.state.config.supportingMapLayers[0].mapService + '/' + 0,
       visible: false,
     });
     esri.map.add(esri.offshore);
 
-    esri.offshore = new FeatureLayer({
-      url: this.$store.state.config.supportingMapLayers[0].mapService + '/' + 6,
+    esri.onshore = new FeatureLayer({
+      url: this.$store.state.config.supportingMapLayers[0].mapService + '/' + 1,
       visible: false,
     });
-    esri.map.add(esri.offshore);
+    esri.map.add(esri.onshore);
 
     //esri.finfishLayer = new FeatureLayer({
     //  url: this.$store.state.config.supportingMapLayers[0].mapService + '/' + 2,
@@ -646,39 +646,136 @@ export default {
     //getRaster statistics
     getRasterStatistics(polygon) {
       let avgDepthDef = {
-        onStatisticField: 'Mexico_Bat',
+        onStatisticField: 'Mexico_Bathy_GMRT_Focal',
         outStatisticFieldName: 'avg_depth',
         statisticType: 'avg',
       };
       let minDepthDef = {
-        onStatisticField: 'Mexico_Bat',
+        onStatisticField: 'Mexico_Bathy_GMRT_Focal',
         outStatisticFieldName: 'min_depth',
         statisticType: 'min',
       };
       let maxDepthDef = {
-        onStatisticField: 'Mexico_Bat',
+        onStatisticField: 'Mexico_Bathy_GMRT_Focal',
         outStatisticFieldName: 'max_depth',
         statisticType: 'max',
       };
-      let avgHSIGDef = {
-        onStatisticField: 'Mexico_Wav',
-        outStatisticFieldName: 'avg_hsig',
+      let avgChlorDef = {
+        onStatisticField: 'Mexico_Chla_10yr_Avg_200',
+        outStatisticFieldName: 'avg_chlor',
         statisticType: 'avg',
       };
-      let minHSIGDef = {
-        onStatisticField: 'Mexico_Wav',
-        outStatisticFieldName: 'min_hsig',
+      let minChlorDef = {
+        onStatisticField: 'Mexico_Chla_10yr_Avg_200',
+        outStatisticFieldName: 'min_chlor',
         statisticType: 'min',
       };
-      let maxHSIGDef = {
-        onStatisticField: 'Mexico_Wav',
-        outStatisticFieldName: 'max_hsig',
+      let maxChlorDef = {
+        onStatisticField: 'Mexico_Chla_10yr_Avg_200',
+        outStatisticFieldName: 'max_chlor',
         statisticType: 'max',
       };
+      let avgWCurrentDef = {
+        onStatisticField: 'Mexico_Current_2010_2020_200',
+        outStatisticFieldName: 'avg_current',
+        statisticType: 'avg',
+      };
+      let minWCurrentDef = {
+        onStatisticField: 'Mexico_Current_2010_2020_200',
+        outStatisticFieldName: 'min_current',
+        statisticType: 'min',
+      };
+      let maxWCurrentDef = {
+        onStatisticField: 'Mexico_Current_2010_2020_200',
+        outStatisticFieldName: 'max_current',
+        statisticType: 'max',
+      };
+      let avgWindDef = {
+        onStatisticField: 'Mexico_Hurricane_1990_2021_Wind_200',
+        outStatisticFieldName: 'avg_wind',
+        statisticType: 'avg',
+      };
+      let minWindDef = {
+        onStatisticField: 'Mexico_Hurricane_1990_2021_Wind_200',
+        outStatisticFieldName: 'min_wind',
+        statisticType: 'min',
+      };
+      let maxWindDef = {
+        onStatisticField: 'Mexico_Hurricane_1990_2021_Wind_200',
+        outStatisticFieldName: 'max_wind',
+        statisticType: 'max',
+      };
+      let avgSalinityDef = {
+        onStatisticField: 'Mexico_Salinity_10yr_Avg_200',
+        outStatisticFieldName: 'avg_salinity',
+        statisticType: 'avg',
+      };
+      let minSalinityDef = {
+        onStatisticField: 'Mexico_Salinity_10yr_Avg_200',
+        outStatisticFieldName: 'min_salinity',
+        statisticType: 'min',
+      };
+      let maxSalinityDef = {
+        onStatisticField: 'Mexico_Salinity_10yr_Avg_200',
+        outStatisticFieldName: 'max_salinity',
+        statisticType: 'max',
+      };
+      let avgTempDef = {
+        onStatisticField: 'Mexico_SST_10yr_Avg_200',
+        outStatisticFieldName: 'avg_temp',
+        statisticType: 'avg',
+      };
+      let minTempDef = {
+        onStatisticField: 'Mexico_SST_10yr_Avg_200',
+        outStatisticFieldName: 'min_temp',
+        statisticType: 'min',
+      };
+      let maxTempDef = {
+        onStatisticField: 'Mexico_SST_10yr_Avg_200',
+        outStatisticFieldName: 'max_temp',
+        statisticType: 'max',
+      };
+      let avgWHeightDef = {
+        onStatisticField: 'Mexico_Wave_2021_200',
+        outStatisticFieldName: 'avg_wheight',
+        statisticType: 'avg',
+      };
+      let minWHeightDef = {
+        onStatisticField: 'Mexico_Wave_2021_200',
+        outStatisticFieldName: 'min_wheight',
+        statisticType: 'min',
+      };
+      let maxWHeightDef = {
+        onStatisticField: 'Mexico_Wave_2021_200',
+        outStatisticFieldName: 'max_wheight',
+        statisticType: 'max',
+      };
+      let avgShipDef = {
+        onStatisticField: 'Mexico_Ship_Density_200',
+        outStatisticFieldName: 'avg_ship',
+        statisticType: 'avg',
+      };
+      let minShipDef = {
+        onStatisticField: 'Mexico_Ship_Density_200',
+        outStatisticFieldName: 'min_ship',
+        statisticType: 'min',
+      };
+      let maxShipDef = {
+        onStatisticField: 'Mexico_Ship_Density_200',
+        outStatisticFieldName: 'max_ship',
+        statisticType: 'max',
+      };
+
       //TODO: GET AVG RASTER SCORES HERE
       let stats = [
         [avgDepthDef, minDepthDef, maxDepthDef],
-        [avgHSIGDef, minHSIGDef, maxHSIGDef],
+        [avgChlorDef, minChlorDef, maxChlorDef],
+        [avgWCurrentDef, minWCurrentDef, maxWCurrentDef],
+        [avgWindDef, minWindDef, maxWindDef],
+        [avgSalinityDef, minSalinityDef, maxSalinityDef],
+        [avgTempDef, minTempDef, maxTempDef],
+        [avgWHeightDef, minWHeightDef, maxWHeightDef],
+        [avgShipDef, minShipDef, maxShipDef],
       ];
       let rasterStats = [];
       for (var i = 0; i < stats.length; i++) {
@@ -689,16 +786,24 @@ export default {
         query.spatialRelationship = 'intersects'; // this is the default
 
         esri.rasterStatsLayer.queryFeatures(query).then((response) => {
-          console.log(response);
           if (response.features.length == 0) {
             rasterStats.push('out of bounds');
           } else {
             rasterStats.push(response.features[0].attributes);
           }
 
-          if (rasterStats.length == 2) {
-            let finalStats = Object.assign({}, rasterStats[0], rasterStats[1]);
-            console.log(finalStats);
+          //at the end of the loop merge all objects into one and update finalstats
+          if (rasterStats.length == 8) {
+            let finalStats = {
+              ...rasterStats[0],
+              ...rasterStats[1],
+              ...rasterStats[2],
+              ...rasterStats[3],
+              ...rasterStats[4],
+              ...rasterStats[5],
+              ...rasterStats[6],
+              ...rasterStats[7],
+            };
             this.$store.commit('updateUserResultsRasterStats', finalStats);
           }
         });
@@ -712,7 +817,7 @@ export default {
       let query = layer.createQuery();
 
       let avgSuitabilityDefinition = {
-        onStatisticField: 'final_scor',
+        onStatisticField: 'final_score',
         outStatisticFieldName: 'avg_score',
         statisticType: 'avg',
       };
@@ -749,9 +854,9 @@ export default {
       query.outFields = ['*'];
 
       layer.queryFeatures(query).then((response) => {
-        console.log(response);
         let zeros = [];
         let warnings = [];
+        let excludeFromErrors = ['Mexico_Ship_Density_200'];
         //if there are warnings or errors create an array of unique field names and send results to the store
         if (response.features.length > 0) {
           response.features.forEach((feature) => {
@@ -759,7 +864,9 @@ export default {
               if (!zeros.includes(property)) {
                 //errors are any values = to 0
                 if (feature.attributes[property] == 0) {
-                  zeros.push(property);
+                  if (!excludeFromErrors.includes(property)) {
+                    zeros.push(property);
+                  }
                 }
               }
               if (!warnings.includes(property)) {
@@ -779,10 +886,10 @@ export default {
           warnings: warnings,
           species: species,
         };
-        console.log(suitability);
         this.$store.commit('updateUserResultsSuitability', suitability);
         this.getAvgSuitability(polygon);
         this.getRasterStatistics(polygon);
+        console.log(zeros);
         let color = zeros.length == 0 ? [0, 255, 0] : [255, 0, 0];
         this.createColorCodedGraphic(polygon, color);
       });

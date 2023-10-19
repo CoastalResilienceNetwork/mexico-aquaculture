@@ -34,14 +34,14 @@
           :disable="this.disableRadios"
           @update:model-value="setSpecies($event)"
           val="offshore"
-          label="Off shore"
+          label="Costa afuera"
         />
         <q-radio
           v-model="$store.state.userProcess.species"
           :disable="this.disableRadios"
           @update:model-value="setSpecies($event)"
           val="onshore"
-          label="On Shore"
+          label="Cerca de la costa"
         />
       </div>
       <div
@@ -285,7 +285,7 @@ export default {
       this.$store.commit('updateUserProcess', this.userProcess);
       this.$store.commit('updateSetTicked', {
         tick: [],
-        untick: ['5_0', '6_0'],
+        untick: ['3_0', '4_0'],
       });
       this.$store.commit('clearUserResults');
       this.$router.push('create');
@@ -293,24 +293,24 @@ export default {
     setSpecies(val) {
       if (val == 'offshore') {
         this.$store.commit('updateSetTicked', {
-          tick: ['5_0'],
-          untick: ['6_0'],
+          tick: ['3_0'],
+          untick: ['4_0'],
         });
         let layerObj = {
           value: 0.5,
-          id: 1,
+          id: 3,
           mapServiceIndex: 0,
           type: 'Raster Layer',
         };
         this.$store.commit('updateSupportingLayerVisibleOpacity', layerObj);
       } else if (val == 'onshore') {
         this.$store.commit('updateSetTicked', {
-          tick: ['6_0'],
-          untick: ['5_0'],
+          tick: ['4_0'],
+          untick: ['3_0'],
         });
         let layerObj = {
           value: 0.5,
-          id: 6,
+          id: 4,
           mapServiceIndex: 0,
           type: 'Raster Layer',
         };
