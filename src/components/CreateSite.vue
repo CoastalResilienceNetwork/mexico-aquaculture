@@ -4,11 +4,9 @@
     <div v-if="$store.state.userProcess.siteCreated == false">
       <div class="row">
         <div class="col-11">
-          <p class="text-h6 text-primary q-mb-none">Create Site</p>
+          <p class="text-h6 text-primary q-mb-none">{{ lang.title }}</p>
           <p>
-            Draw a rectangle on the map representing the aquaculture site
-            boundary. Retrieve site specific statistics and suitability
-            parameters.
+            {{ lang.description }}
           </p>
         </div>
         <div class="col-1">
@@ -19,13 +17,13 @@
             icon="layers_clear"
             @click="clearAllLayers()"
           >
-            <q-tooltip>Clear layers</q-tooltip>
+            <q-tooltip>{{ lang.clearLayers }}</q-tooltip>
           </q-btn>
         </div>
       </div>
 
       <p class="text-subtitle2 q-mb-none q-mt-lg text-primary">
-        Select species type
+        {{ lang.select }}
       </p>
       <q-separator spaced />
       <div class="q-gutter-sm">
@@ -51,13 +49,11 @@
         "
       >
         <p class="text-subtitle2 q-mb-none q-mt-lg text-primary">
-          Draw site bounding box
+          {{ lang.drawTitle }}
         </p>
         <q-separator spaced />
         <p>
-          Zoom and pan the map to find your site location. Then click the Draw
-          button to start drawing. Click and drag the mouse to draw a box around
-          the site.
+          {{ lang.drawDescription }}
         </p>
         <q-btn
           size="md"
@@ -66,7 +62,7 @@
           outline
           unelevated
           @click="drawExtent()"
-          >Draw &nbsp;
+          >{{ lang.drawButton }} &nbsp;
           <q-icon v-if="showDraw" name="draw" />
         </q-btn>
       </div>
@@ -77,13 +73,13 @@
         "
       >
         <p class="text-subtitle2 q-mb-none q-mt-lg text-primary">
-          Review Site Statistics:
+          {{ lang.reviewStatistics }}
         </p>
         <q-separator spaced />
 
         <q-expansion-item
           v-model="expanded3"
-          label="Site Statistics"
+          :label="lang.siteStatistics"
           class="q-mb-md"
           dark
           header-class="bg-primary"
@@ -93,12 +89,12 @@
       </div>
       <div v-if="$store.state.userProcess.drawStatus == 'done-drawing'">
         <p class="text-subtitle2 q-mb-none q-mt-lg text-primary">
-          Review site suitability parameters
+          {{ lang.reviewParameters }}
         </p>
         <q-separator spaced />
         <q-expansion-item
           v-model="expanded1"
-          label="Site Suitability Parameters"
+          :label="lang.siteParameters"
           class="q-mb-md"
           dark
           header-class="bg-primary"
@@ -106,40 +102,44 @@
           <site-parameters></site-parameters>
         </q-expansion-item>
         <!--q-input outlined dense class="q-mb-md" v-model="name" label="Enter your site name"></q-input-->
-        <p>Click Create Site to generate a printable report and a custom URL</p>
+        <p>{{ lang.createSiteDescription }}</p>
         <q-btn
           unelevated
           class="q-mr-md"
           color="secondary"
           @click="createSite()"
-          >Create Site</q-btn
+          >{{ lang.createButton }}</q-btn
         >
-        <q-btn size="md" color="secondary" outline @click="clearUserProcess()"
-          >Reset</q-btn
+        <q-btn
+          size="md"
+          color="secondary"
+          outline
+          @click="clearUserProcess()"
+          >{{ lang.reset }}</q-btn
         >
       </div>
     </div>
 
     <!-- site created section-->
     <div v-if="$store.state.userProcess.siteCreated == true">
-      <p class="text-h6 text-primary q-mb-none">Site Created</p>
+      <p class="text-h6 text-primary q-mb-none">{{ lang.siteCreated }}</p>
       <p>
-        Print a PDF report of the site results and map. Retrieve a custom URL to
-        save or share your site boundary.
+        {{ lang.siteCreatedDescription }}
       </p>
-      <p class="text-subtitle2 text-primary q-mb-none q-mt-lg">Create Report</p>
-      <q-separator spaced />
-      <p>Create a printable PDF report of your site area and parameters</p>
-      <q-btn outline unelevated color="secondary" @click="generateReport"
-        >Generate Report</q-btn
-      >
       <p class="text-subtitle2 text-primary q-mb-none q-mt-lg">
-        Copy custom URL
+        {{ lang.createReport }}
+      </p>
+      <q-separator spaced />
+      <p>{{ lang.createReportDescription }}</p>
+      <q-btn outline unelevated color="secondary" @click="generateReport">{{
+        lang.createReportButton
+      }}</q-btn>
+      <p class="text-subtitle2 text-primary q-mb-none q-mt-lg">
+        {{ lang.copyURL }}
       </p>
       <q-separator spaced />
       <p class="text-caption">
-        Note: Your site information is embedded in the URL. This site can only
-        be viewed or shared with the custom link provided below.
+        {{ lang.copyURLNote }}
       </p>
       <q-btn
         outline
@@ -147,7 +147,7 @@
         class="q-mb-md"
         color="secondary"
         @click="copyURL()"
-        >Copy Url
+        >{{ lang.copyURLButton }}
         <q-tooltip
           v-model="showTooltip"
           no-parent-event
@@ -167,12 +167,12 @@
         </a>
       </div>
       <p class="text-subtitle2 q-mb-none q-mt-lg text-primary">
-        Review Site Statistics
+        {{ lang.reviewStatistics }}
       </p>
       <q-separator spaced />
       <q-expansion-item
         v-model="expanded4"
-        label="Site Statistics"
+        :label="lang.siteStatistics"
         class="q-mb-md"
         header-class="bg-grey-3"
       >
@@ -180,12 +180,12 @@
       </q-expansion-item>
 
       <p class="text-subtitle2 text-primary q-mb-sm q-mt-lg">
-        Review Site Suitability Parameters
+        {{ lang.reviewParameters }}
       </p>
       <q-separator spaced />
       <q-expansion-item
         v-model="expanded2"
-        label="Site Suitability Parameters"
+        :label="lang.siteParameters"
         class="q-mb-md"
         header-class="bg-grey-3"
       >
@@ -199,11 +199,10 @@
         @click="clearUserProcess()"
         unelevated
         color="secondary"
-        >Create New Site</q-btn
+        >{{ lang.createNew }}</q-btn
       >
       <p class="text-caption q-mt-sm">
-        Note: Creating a new site will delete this entery. Make sure you copy
-        your URL and save it to view this site at a later time.
+        {{ lang.createNewNote }}
       </p>
     </div>
   </div>
@@ -239,7 +238,11 @@ export default {
       showDraw: false,
     };
   },
-  computed: {},
+  computed: {
+    lang() {
+      return this.$store.getters.langObj.createSite;
+    },
+  },
   mounted() {
     //gather variables from the store
     this.userProcess = this.$store.state.userProcess;

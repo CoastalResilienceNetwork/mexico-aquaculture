@@ -377,18 +377,13 @@ export default {
         {
           sectionName: 'Ambiental',
           sectionIcon: 'language',
-
           sectionData: [
             {
               name: 'Ríos - Zona de influencia de 1 km',
               caption: '',
-
               value: '',
-
               meetsRule: this.calcZeros(['Mexico_River_1km_w']),
-
               rule: '',
-
               description:
                 'Se deben evitar las desembocaduras de los ríos para el desarrollo de la acuicultura.',
 
@@ -497,7 +492,7 @@ export default {
             },
 
             {
-              name: 'Kd490',
+              name: 'Kd490 (Turbidez)',
 
               caption: '',
 
@@ -510,7 +505,7 @@ export default {
               description:
                 'Kd490 es una medida de turbidez, se deben evitar áreas con un valor alto',
 
-              layers: [{ name: 'Kd490', id: '16_0' }],
+              layers: [{ name: 'Kd490 (Turbidez)', id: '16_0' }],
             },
 
             {
@@ -590,16 +585,15 @@ export default {
 
         {
           sectionName: 'Infraestructura',
-
           sectionIcon: 'houseboat',
-
           sectionData: [
             {
               SectionName: 'Infraestructura',
 
               SectionIcon: 'houseboat',
 
-              name: 'Puertos - Zona de influencia de 20 km',
+              name:
+                'Puertos y sitios de desembarco - Zona de influencia de 20 km',
 
               caption: '',
 
@@ -610,10 +604,14 @@ export default {
               rule: '',
 
               description:
-                'Los puertos son una infraestructura importante para las operaciones en alta mar.',
+                'Los puertos y sitios de desembarco son una infraestructura importante para las operaciones en alta mar.',
 
               layers: [
-                { name: 'Puertos - Zona de influencia de 20 km', id: '21_0' },
+                {
+                  name:
+                    'Puertos y sitios de desembarco - Zona de influencia de 20 km',
+                  id: '21_0',
+                },
               ],
             },
 
@@ -699,7 +697,7 @@ export default {
 
               SectionIcon: 'houseboat',
 
-              name: 'Sitios de acuicultura',
+              name: 'Permisos y concesiones acuícolas - Vigentes',
 
               caption: '',
 
@@ -718,7 +716,7 @@ export default {
 
               layers: [
                 {
-                  name: 'Sitios de acuicultura - Zona de influencia de 500 m',
+                  name: 'Permisos y concesiones acuícolas - Vigentes',
 
                   id: '25_0',
                 },
@@ -784,19 +782,17 @@ export default {
                 min: this.$store.state.userResults.rasterStatistics.min_ship,
                 max: this.$store.state.userResults.rasterStatistics.max_ship,
               },
-              layers: [{ name: 'Densidad de buques, 2015 - 2021', id: '32_0' }],
+              layers: [{ name: 'Densidad de buques, 2015 - 2021', id: '28_0' }],
             },
           ],
         },
 
         {
           sectionName: 'Recursos naturales',
-
           sectionIcon: 'spa',
-
           sectionData: [
             {
-              name: 'Áreas Marinas Protegidas',
+              name: 'Área Natural Protegida',
 
               caption: '',
 
@@ -812,7 +808,7 @@ export default {
               description:
                 'Evitar el conflicto entre la gestión de los recursos naturales y las operaciones de acuicultura.',
 
-              layers: [{ name: 'Áreas Marinas Protegidas', id: '36_0' }],
+              layers: [{ name: 'Área Natural Protegida', id: '32_0' }],
             },
 
             {
@@ -829,7 +825,7 @@ export default {
               description:
                 'Evitar el conflicto entre la gestión de los recursos naturales y las operaciones de acuicultura.',
 
-              layers: [{ name: 'Zonas de Refugio Pesquero (ZRP)', id: '40_0' }],
+              layers: [{ name: 'Zonas de Refugio Pesquero (ZRP)', id: '34_0' }],
             },
 
             {
@@ -850,7 +846,7 @@ export default {
                 {
                   name: 'Áreas de conservación de humedales RAMSAR',
 
-                  id: '38_0',
+                  id: '33_0',
                 },
               ],
             },
@@ -873,7 +869,7 @@ export default {
                 {
                   name: 'Áreas de manglares - Zona de influencia de 50 m',
 
-                  id: '34_0',
+                  id: '30_0',
                 },
               ],
             },
@@ -898,7 +894,7 @@ export default {
                   name:
                     'Áreas de manglares amenazadas - Zona de influencia de 500 m',
 
-                  id: '35_0',
+                  id: '31_0',
                 },
               ],
             },
@@ -907,12 +903,11 @@ export default {
 
         {
           sectionName: 'Socioculturales',
-
           sectionIcon: 'people',
-
           sectionData: [
             {
-              name: 'Resultados del mapeo comunitario - Puntos',
+              name:
+                'Áreas apropiadas para acuicultura - mapeo participativo - Puntos',
 
               caption: '',
 
@@ -923,19 +918,21 @@ export default {
               rule: '',
 
               description:
-                'A través de un enfoque de mapeo comunitario se identificaron las áreas consideradas adecuadas.',
+                'A través de un enfoque de mapeo participativo se identificaron las áreas consideradas adecuadas.',
 
               layers: [
                 {
-                  name: 'Resultados del mapeo comunitario - Puntos',
+                  name:
+                    'Áreas apropiadas para acuicultura - mapeo participativo - Puntos',
 
-                  id: '44_0',
+                  id: '36_0',
                 },
               ],
             },
 
             {
-              name: 'Resultados del mapeo comunitario - Líneas',
+              name:
+                'Áreas apropiadas para acuicultura - mapeo participativo - Líneas',
 
               caption: '',
 
@@ -946,19 +943,21 @@ export default {
               rule: '',
 
               description:
-                'A través de un enfoque de mapeo comunitario se identificaron las áreas consideradas adecuadas.',
+                'A través de un enfoque de mapeo participativo se identificaron las áreas consideradas adecuadas.',
 
               layers: [
                 {
-                  name: 'Resultados del mapeo comunitario - Líneas',
+                  name:
+                    'Áreas apropiadas para acuicultura - mapeo participativo - Líneas',
 
-                  id: '42_0',
+                  id: '37_0',
                 },
               ],
             },
 
             {
-              name: 'Resultados del mapeo comunitario - Polígonos',
+              name:
+                'Áreas apropiadas para acuicultura - mapeo participativo - Polígonos',
 
               caption: '',
 
@@ -969,13 +968,14 @@ export default {
               rule: '',
 
               description:
-                'A través de un enfoque de mapeo comunitario se identificaron las áreas consideradas adecuadas.',
+                'A través de un enfoque de mapeo participativo se identificaron las áreas consideradas adecuadas.',
 
               layers: [
                 {
-                  name: 'Resultados del mapeo comunitario - Polígonos',
+                  name:
+                    'Áreas apropiadas para acuicultura - mapeo participativo - Polígonos',
 
-                  id: '43_0',
+                  id: '38_0',
                 },
               ],
             },
@@ -992,20 +992,15 @@ export default {
 
           sectionData: [
             {
-              name: 'Bahías',
-
+              name: 'Bahías y estuarios',
               caption: '',
-
               value: '',
-
               meetsRule: this.calcZeros(['Baja_All_Bays_w']),
-
               rule: '',
-
               description:
-                'Las bahías ofrecen protección contra el medio ambiente.',
+                'Estas áreas brindan refugio contra grandes olas y corrientes, y son importantes para la acuicultura de mariscos.',
 
-              layers: [{ name: 'Bahías', id: '8_0' }],
+              layers: [{ name: 'Bahías y estuarios', id: '8_0' }],
             },
 
             {
@@ -1149,7 +1144,7 @@ export default {
             },
 
             {
-              name: 'Kd490',
+              name: 'Kd490 (Turbidez)',
 
               caption: '',
 
@@ -1162,7 +1157,7 @@ export default {
               description:
                 'Kd490 es una medida de turbidez, se deben evitar áreas con un valor alto',
 
-              layers: [{ name: 'Kd490', id: '16_0' }],
+              layers: [{ name: 'Kd490 (Turbidez)', id: '16_0' }],
             },
 
             {
@@ -1257,7 +1252,8 @@ export default {
 
               SectionIcon: 'houseboat',
 
-              name: 'Puertos - Zona de influencia de 20 km',
+              name:
+                'Puertos y sitios de desembarco - Zona de influencia de 20 km',
 
               caption: '',
 
@@ -1268,10 +1264,14 @@ export default {
               rule: '',
 
               description:
-                'Los puertos son una infraestructura importante para las operaciones en alta mar.',
+                'Los puertos y sitios de desembarco son una infraestructura importante para las operaciones en alta mar.',
 
               layers: [
-                { name: 'Puertos - Zona de influencia de 20 km', id: '21_0' },
+                {
+                  name:
+                    'Puertos y sitios de desembarco - Zona de influencia de 20 km',
+                  id: '21_0',
+                },
               ],
             },
 
@@ -1357,7 +1357,7 @@ export default {
 
               SectionIcon: 'houseboat',
 
-              name: 'Sitios de acuicultura',
+              name: 'Permisos y concesiones acuícolas - Vigentes',
 
               caption: '',
 
@@ -1376,7 +1376,7 @@ export default {
 
               layers: [
                 {
-                  name: 'Sitios de acuicultura - Zona de influencia de 500 m',
+                  name: 'Permisos y concesiones acuícolas - Vigentes',
 
                   id: '25_0',
                 },
@@ -1442,7 +1442,7 @@ export default {
               description:
                 'Deben evitarse las zonas de alta densidad de envío.',
 
-              layers: [{ name: 'Densidad de buques, 2015 - 2021', id: '32_0' }],
+              layers: [{ name: 'Densidad de buques, 2015 - 2021', id: '28_0' }],
             },
           ],
         },
@@ -1454,7 +1454,7 @@ export default {
 
           sectionData: [
             {
-              name: 'Áreas Marinas Protegidas',
+              name: 'Área Natural Protegida',
 
               caption: '',
 
@@ -1470,7 +1470,7 @@ export default {
               description:
                 'Evitar el conflicto entre la gestión de los recursos naturales y las operaciones de acuicultura.',
 
-              layers: [{ name: 'Áreas Marinas Protegidas', id: '36_0' }],
+              layers: [{ name: 'Áreas Marinas Protegidas', id: '32_0' }],
             },
 
             {
@@ -1487,7 +1487,7 @@ export default {
               description:
                 'Evitar el conflicto entre la gestión de los recursos naturales y las operaciones de acuicultura.',
 
-              layers: [{ name: 'Zonas de Refugio Pesquero (ZRP)', id: '40_0' }],
+              layers: [{ name: 'Zonas de Refugio Pesquero (ZRP)', id: '34_0' }],
             },
 
             {
@@ -1508,7 +1508,7 @@ export default {
                 {
                   name: 'Áreas de conservación de humedales RAMSAR',
 
-                  id: '38_0',
+                  id: '33_0',
                 },
               ],
             },
@@ -1531,7 +1531,7 @@ export default {
                 {
                   name: 'Áreas de manglares - Zona de influencia de 50 m',
 
-                  id: '34_0',
+                  id: '30_0',
                 },
               ],
             },
@@ -1556,7 +1556,7 @@ export default {
                   name:
                     'Áreas de manglares amenazadas - Zona de influencia de 500 m',
 
-                  id: '35_0',
+                  id: '31_0',
                 },
               ],
             },
@@ -1570,7 +1570,8 @@ export default {
 
           sectionData: [
             {
-              name: 'Resultados del mapeo comunitario - Puntos',
+              name:
+                'Áreas apropiadas para acuicultura - mapeo participativo - Puntos',
 
               caption: '',
 
@@ -1581,19 +1582,21 @@ export default {
               rule: '',
 
               description:
-                'A través de un enfoque de mapeo comunitario se identificaron las áreas consideradas adecuadas.',
+                'A través de un enfoque de mapeo participativo se identificaron las áreas consideradas adecuadas.',
 
               layers: [
                 {
-                  name: 'Resultados del mapeo comunitario - Puntos',
+                  name:
+                    'Áreas apropiadas para acuicultura - mapeo participativo - Puntos',
 
-                  id: '44_0',
+                  id: '36_0',
                 },
               ],
             },
 
             {
-              name: 'Resultados del mapeo comunitario - Líneas',
+              name:
+                'Áreas apropiadas para acuicultura - mapeo participativo - Líneas',
 
               caption: '',
 
@@ -1604,19 +1607,21 @@ export default {
               rule: '',
 
               description:
-                'A través de un enfoque de mapeo comunitario se identificaron las áreas consideradas adecuadas.',
+                'A través de un enfoque de mapeo participativo se identificaron las áreas consideradas adecuadas.',
 
               layers: [
                 {
-                  name: 'Resultados del mapeo comunitario - Líneas',
+                  name:
+                    'Áreas apropiadas para acuicultura - mapeo participativo - Líneas',
 
-                  id: '42_0',
+                  id: '37_0',
                 },
               ],
             },
 
             {
-              name: 'Resultados del mapeo comunitario - Polígonos',
+              name:
+                'Áreas apropiadas para acuicultura - mapeo participativo - Polígonos',
 
               caption: '',
 
@@ -1627,13 +1632,14 @@ export default {
               rule: '',
 
               description:
-                'A través de un enfoque de mapeo comunitario se identificaron las áreas consideradas adecuadas.',
+                'A través de un enfoque de mapeo participativo se identificaron las áreas consideradas adecuadas.',
 
               layers: [
                 {
-                  name: 'Resultados del mapeo comunitario - Polígonos',
+                  name:
+                    'Áreas apropiadas para acuicultura - mapeo participativo - Polígonos',
 
-                  id: '43_0',
+                  id: '38_0',
                 },
               ],
             },

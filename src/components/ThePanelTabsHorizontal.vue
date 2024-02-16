@@ -15,14 +15,14 @@
           <q-route-tab
             to="/"
             name="supporting"
-            label="All Layers"
+            :label="lang.allLayers"
             icon="layers"
           />
 
           <q-route-tab
             to="/create"
             name="create"
-            label="Create Site"
+            :label="lang.createSite"
             icon="edit"
           />
         </q-tabs>
@@ -64,6 +64,11 @@ export default {
   components: {
     SupportingLayers,
     CreateSite,
+  },
+  computed: {
+    lang() {
+      return this.$store.getters.langObj.tabs;
+    },
   },
   data() {
     return {

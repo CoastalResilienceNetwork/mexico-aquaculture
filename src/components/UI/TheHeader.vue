@@ -1,13 +1,50 @@
 <template>
   <header class="print-hide">
     <span class="text-green-1"
-      >Aquaculture Site Suitability
-      <span class="text-subtitle2 q-ml-sm text-green-1"
-        >Baja Peninsula - Mexico</span
-      >
+      >{{ lang.title }}
+      <span class="text-subtitle2 q-ml-sm text-green-1">{{
+        lang.subtitle
+      }}</span>
     </span>
 
     <div>
+      <!--q-btn-dropdown
+        icon="language"
+        rounded
+        text-color="primary"
+        color="white"
+        :label="langSelection"
+        size="12px"
+        class="q-mr-md"
+      >
+        <q-list dense class="">
+          <q-item
+            clickable
+            v-close-popup
+            @click="
+              langSelection = 'English';
+              this.$store.commit('updateLanguage', 'english');
+            "
+          >
+            <q-item-section>
+              <q-item-label>English</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-separator></q-separator>
+          <q-item
+            clickable
+            v-close-popup
+            @click="
+              langSelection = 'Spanish';
+              this.$store.commit('updateLanguage', 'spanish');
+            "
+          >
+            <q-item-section>
+              <q-item-label>Spanish</q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
+      </q-btn-dropdown-->
       <q-btn
         @click="showHelp = true"
         padding="none"
@@ -22,7 +59,7 @@
   <q-dialog v-model="showHelp" persistent>
     <q-card style="width: 900px; max-width: 80vw;">
       <q-card-section>
-        <div class="text-h6 text-primary">Aquaculture Site Suitability</div>
+        <div class="text-h6 text-primary">{{ lang.title }}</div>
         <q-separator color="primary" />
       </q-card-section>
 
@@ -49,7 +86,13 @@ export default {
   data() {
     return {
       showHelp: false,
+      langSelection: 'English',
     };
+  },
+  computed: {
+    lang() {
+      return this.$store.getters.langObj.header;
+    },
   },
   mounted() {
     //localStorage.userHideDialogOption = ''

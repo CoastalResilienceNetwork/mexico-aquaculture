@@ -3,7 +3,7 @@
     <tbody>
       <tr>
         <td style="background-color: rgb(25,95,100, .1)" class="text-left">
-          Overall Suitability ({{ $store.state.userResults.species }})
+          {{ overallSuitability }}
         </td>
         <td
           colspan="3"
@@ -37,7 +37,7 @@
       </tr>
       <tr>
         <td style="background-color: rgb(25,95,100, .1)" class="text-left">
-          Avg Score
+          {{ lang.avgScore }}
         </td>
         <td colspan="3" class="text-left">
           {{ $store.state.userResults.avgSuitability }}
@@ -45,7 +45,7 @@
       </tr>
       <tr>
         <td style="background-color: rgb(25,95,100, .1)" class="text-left">
-          Area
+          {{ lang.area }}
         </td>
         <td colspan="3" class="text-left">
           {{ $store.state.userSiteMap.drawAcres }} sq meters
@@ -53,7 +53,7 @@
       </tr>
       <tr>
         <td style="background-color: rgb(25,95,100, .1)" class="text-left">
-          Site Corners <br />(decimal degrees)
+          {{ lang.siteCorners }} <br />({{ lang.dd }})
         </td>
         <td class="text-left">
           Upper Left:<br />
@@ -298,7 +298,22 @@
 export default {
   name: 'SiteSatistics',
   components: {},
-  computed: {},
+  computed: {
+    lang() {
+      return this.$store.getters.langObj.siteStatistics;
+    },
+    overallSuitability() {
+      let text = '';
+      if (this.$store.state.userResults.species) {
+        console.log(this.$store.state.userResults.species);
+        text =
+          this.$store.state.userResults.species == 'onshore'
+            ? this.lang.overallSuitabilityOnshore
+            : this.lang.overallSuitabilityOffshore;
+      }
+      return text;
+    },
+  },
   mounted() {},
   methods: {},
 };

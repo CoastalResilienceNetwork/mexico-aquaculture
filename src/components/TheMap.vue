@@ -155,13 +155,13 @@ export default {
     //TODO: add this to config not needed?
 
     esri.offshore = new FeatureLayer({
-      url: this.$store.state.config.supportingMapLayers[0].mapService + '/' + 0,
+      url: this.$store.state.config.supportingMapLayers[0].mapService + '/' + 1,
       visible: false,
     });
     esri.map.add(esri.offshore);
 
     esri.onshore = new FeatureLayer({
-      url: this.$store.state.config.supportingMapLayers[0].mapService + '/' + 1,
+      url: this.$store.state.config.supportingMapLayers[0].mapService + '/' + 0,
       visible: false,
     });
     esri.map.add(esri.onshore);
@@ -211,6 +211,11 @@ export default {
     // create legend widget
     esri.legend = new Legend({
       view: esri.mapView,
+    });
+
+    new Legend({
+      view: esri.mapView,
+      container: 'legend2',
     });
 
     // create expand widget to hide and show legend
